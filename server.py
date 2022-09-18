@@ -31,13 +31,8 @@ def sklearnScript():
     predictionColumn: str = data['predictColumn']
     df: pd.DataFrame = loadDataUrl(dataset)
     trainTestData: dict = findTestTrainData(df=df, trainPart=trainPart, testPart=testPart, predictionColumn=predictionColumn)
-    results = buildTrainModel(type=modelType, modelName=modelName, data=trainTestData, args=arguments, scoring=scoring)
+    results = buildTrainModel(modelType=modelType, modelName=modelName, data=trainTestData, args=arguments, scoring=scoring)
     return jsonify(results)
-
-@app.route('/tensorflow', methods=['POST'])
-def tensorflowScript():
-    
-    pass
 
 def main():
     app.run()
