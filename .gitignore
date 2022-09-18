@@ -1,3 +1,5 @@
 /nocode
 test.py
 .flaskenv
+/*/__pycache__
+IMDBDataset.csv
