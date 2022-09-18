@@ -34,6 +34,11 @@ def sklearnScript():
     results = buildTrainModel(type=modelType, modelName=modelName, data=trainTestData, args=arguments, scoring=scoring)
     return jsonify(results)
 
+@app.route('/tensorflow', methods=['POST'])
+def tensorflowScript():
+    
+    pass
+
 def main():
     app.run()
 
