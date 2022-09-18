@@ -35,6 +35,6 @@ def buildTrainModel(type: str, modelName: str, data: dict, args: dict, scoring: 
     rtnDict = {
         'predictions': predictions.tolist(),
         'actual': y_test.tolist(), 
-        scoring: score
+        'scoring': score
     }
     return rtnDict

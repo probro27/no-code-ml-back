@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify
 from Services.sklearnTrainer import findTestTrainData, buildTrainModel
-import flask_cors
+from flask_cors import CORS
 import pandas as pd
 
 app = Flask(__name__)
-flask_cors.CORS(app)
+CORS(app, resources={r"*": {"origins": "*"}})
 
 @app.route('/')
 def basicRoute():
@@ -21,8 +21,8 @@ def loadDataUrl(url: str) -> pd.DataFrame:
 @app.route('/sklearn', methods=['POST'])
 def sklearnScript():
     data = dict(request.json)
-    trainPart: int = data['trainPart']
-    testPart: int = data['testPart']
+    trainPart: float = float(data['trainPart'])
+    testPart: float = float(data['testPart'])
     arguments: dict = data['args']
     dataset = data['dataset']
     modelType: str = data['modelType']
