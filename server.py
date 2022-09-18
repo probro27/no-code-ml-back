@@ -1,6 +1,3 @@
-from cgi import test
-from distutils.command.build import build
-from gettext import find
 from flask import Flask, request, jsonify
 from Services.sklearnTrainer import findTestTrainData, buildTrainModel
 import flask_cors

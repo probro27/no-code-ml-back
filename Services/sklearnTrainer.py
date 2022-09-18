@@ -26,15 +26,15 @@ def buildTrainModel(type: str, modelName: str, data: dict, args: dict, scoring: 
     predictions = model.predict(X_test)
     scorePackage = 'sklearn.metrics'
     components = scoring.split('_')
-    if components[-1] == 'score' or components[-1] == 'loss': 
+    if components[-1] == 'score' or components[-1] == 'loss' or components[-1] == 'error': 
         scorerName = scoring
     else:
         scorerName = f'{scoring}_score'
     scorerImport = getattr(__import__(scorePackage, fromlist=[scorerName]), scorerName)
     score = scorerImport(y_test, predictions)
     rtnDict = {
-        'predictions': predictions,
-        'actual': y_test, 
+        'predictions': predictions.tolist(),
+        'actual': y_test.tolist(), 
         scoring: score
     }
     return rtnDict
